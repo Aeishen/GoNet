@@ -42,11 +42,14 @@ func doServerStuff(conn net.Conn) {
 			clName = input
 		}
 
+		// 设置客户端为活跃状态
+		mapUsers[clName] = 1
+
 		buf = make([]byte, 512)
 		_, err = conn.Read(buf)
-
 		goWeb.ErrorHandle(err, "conn.Read err...")
 
+		fmt.Printf("Received data: --%v\n--", string(buf))
 
 		// 关闭服务器
 		if strings.Contains(input, ": SH") {
@@ -62,12 +65,8 @@ func doServerStuff(conn net.Conn) {
 		// 打印所有客户端活跃状态
 		if strings.Contains(input, ": Q") {
 			mapUsers[clName] = 0
-			fmt.Printf("%s levaing/\n", clName)
+			fmt.Printf("%s levaing...\n", clName)
 		}
-
-		// 设置客户端为活跃状态
-		mapUsers[clName] = 1
-		fmt.Printf("Received data: --%v--", string(buf))
 	}
 }
 
