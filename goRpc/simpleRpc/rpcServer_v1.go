@@ -12,10 +12,9 @@ import (
 func main() {
 	calc := new(rpcObjects.Args)  // 服务器创建一个用于计算的对象
 
-	_ = rpc.Register(calc)        // 注册进rpc
-	//_ = rpc.RegisterName("Calculator", calc)  //也可以通过名称注册对象
+	_ = rpc.Register(calc)        // 注册rpc服务
 
-	rpc.HandleHTTP()
+	rpc.HandleHTTP()              // 采用http协议作为rpc载体
 
 	listener, e := net.Listen("tcp", "localhost:1234")  // 开启监听
 	if e != nil {
