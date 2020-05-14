@@ -1,3 +1,5 @@
+// 一个简单的web应用, 实现了一组页面的显示、编辑、和保存(使用命令行运行, 否则找不到文件路径)
+
 package main
 
 import (
@@ -92,7 +94,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request, title string) {
 }
 
 
-//使模板和结构体输出到页面
+//使模板和结构体输出到页面(使用了模板去合并结构体与 html 模板中的数据)
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 	err := templates[tmpl].Execute(w, p) //调用一个模板，将 Page 结构体 p 作为一个参数在模板中进行替换，并且写入到 ResponseWriter w 中
 	if err != nil {
