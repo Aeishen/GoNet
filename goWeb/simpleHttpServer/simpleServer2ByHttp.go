@@ -37,8 +37,10 @@ func FromServer(w http.ResponseWriter, req *http.Request){
 }
 
 func main() {
-	http.HandleFunc("/simple", SimpleServer)
-	http.HandleFunc("/from", FromServer)
+
+	// 使用LogPanics处理panic
+	http.HandleFunc("/simple", LogPanics(SimpleServer))
+	http.HandleFunc("/from", LogPanics(FromServer))
 
 	err := http.ListenAndServe("localhost:8080", nil)
 	goWeb.ErrorHandle(err,"ListenAndServe :")
