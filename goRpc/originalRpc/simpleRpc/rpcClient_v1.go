@@ -8,6 +8,8 @@ import (
 )
 
 func main()  {
+
+	// DialHTTP在默认的HTTP RPC路径上侦听指定网络地址处的HTTP RPC服务器
 	cli, err := rpc.DialHTTP("tcp","localhost:1234")
 	if err != nil {
 		log.Fatal("Error dialing:", err)
@@ -23,7 +25,7 @@ func main()  {
 	}
 	fmt.Printf("Args: %d * %d = %d\n", args.N, args.M, reply)
 
-	// 异步调用
+	//异步调用
 	//call1 := cli.Go("Args.Multiply", args, &reply, nil)
 	//replyCall := <- call1.Done
 	//fmt.Printf("Args: %d * %d = %d\n", args.N, args.M, reply)

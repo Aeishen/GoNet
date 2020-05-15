@@ -1,3 +1,5 @@
+//采用http协议作为rpc载体
+
 package main
 
 import (
@@ -10,11 +12,11 @@ import (
 )
 
 func main() {
-	calc := new(rpcObjects.Args)  // 服务器创建一个用于计算的对象
+	calc := new(rpcObjects.Args) // 服务器创建一个用于计算的对象
 
 	_ = rpc.Register(calc)        // 注册rpc服务
 
-	rpc.HandleHTTP()              // 采用http协议作为rpc载体
+	rpc.HandleHTTP()              // HandleHTTP在默认rpcPath上注册用于RPC消息的HTTP处理程序，并在默认debugPath上注册调试处理程序
 
 	listener, e := net.Listen("tcp", "localhost:1234")  // 开启监听
 	if e != nil {
