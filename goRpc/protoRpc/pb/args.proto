@@ -1,0 +1,17 @@
+syntax = "proto3";
+package pb;
+
+message ArgsReq {
+    int32 n = 1;
+    int32 m = 2;
+}
+
+message ArgsResp {
+    int32 reply = 1;
+}
+
+
+// rpc方法
+service ArgsService {
+    rpc multiply (ArgsReq) returns (ArgsResp);
+}
