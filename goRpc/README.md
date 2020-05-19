@@ -36,4 +36,8 @@ golang官方还提供了net/rpc/jsonrpc库实现RPC方法，JSON RPC采用JSON�
 protobuf进行数据编解码，根据protobuf声明文件自动生成rpc方法定义与服务注册代码，在golang中可以很方便的进
 行rpc服务调用。
 
+###golang中RPC框架的两个特色设计
+1. rpc数据打包时可以通过插件实现自定义的编码和解码
+2. rpc建立在抽象的io.ReadWriteCloser接口之上, 我们可以将rpc架设在不同的通信协议上
+
 

@@ -27,6 +27,11 @@ func main() {
 	if err != nil {
 		log.Fatal("Starting RPC-server -listen error:", err)
 	}
-	rpc.Accept(listener)
-	//time.Sleep(1000e9)
+	for{
+		conn, err := listener.Accept()
+		if err != nil{
+			log.Fatal("listener.Accept error:", err)
+		}
+		go rpc.ServeConn(conn)
+	}
 }
