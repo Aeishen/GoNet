@@ -1,6 +1,6 @@
 syntax = "proto3";
-package pb;
-
+//package mypb;
+option go_package = ".;mypb";
 message ArgsReq {
     int32 n = 1;
     int32 m = 2;
@@ -9,7 +9,6 @@ message ArgsReq {
 message ArgsResp {
     int32 reply = 1;
 }
-
 
 // rpc方法
 service ArgsService {
